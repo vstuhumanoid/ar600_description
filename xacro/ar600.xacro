@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ar600">
+
+	<xacro:property name="d2r" value="0.01745329251994329577"/>
+	<xacro:property name="M_PI" value="3.14159"/>
+
+	<xacro:include filename="wtf.xacro"/>
+	<xacro:include filename="pelvis.xacro"/>
+	<xacro:include filename="leg.xacro"/>
+
+	<xacro:pelvis/>
+	<xacro:leg parent="base_link" side="left"/>
+	<xacro:leg parent="base_link" side="right"/>
+
+</robot>

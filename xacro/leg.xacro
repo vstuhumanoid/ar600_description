@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ar600">
+
+	<xacro:macro name="leg" params="parent side"> 
+
+		<xacro:if value="${side == 'left'}">
+  			<xacro:property name="x_shift" value="-0.088" />
+		</xacro:if>
+		<xacro:if value="${side == 'right'}">
+  			<xacro:property name="x_shift" value="0.088" />
+		</xacro:if>
+
+		<link name="hip_fork_${side}">
+	 		<xacro:wtf/>	 		
+	 	</link>
+	 	<link name="hip_cross_${side}">
+	 		<xacro:wtf/>	 		
+	 	</link>
+	 	<link name="hip_${side}">
+	 		<xacro:wtf/>	 		
+	 	</link>
+	 	<link name="shin_${side}">
+	 		<xacro:wtf/>	 		
+	 	</link>
+	 	<link name="ankle_${side}">
+	 		<xacro:wtf/>	 		
+	 	</link>
+	 	<link name="foot_${side}">
+	 		<xacro:wtf/>	 		
+	 	</link>
+
+
+	 	<!-- hip z rotate (vertical)-->
+	 	<joint name="hip_r_joint_${side}"
+	 		   type="revolute">
+	 		<parent link="${parent}"/>
+	 		<child link="hip_fork_${side}"/>
+	 		<!-- z unknown -->
+	 		<origin xyz="${x_shift} 0.0276 0" rpy="0 0 0"/>
+	 		<axis xyz="0 0 1"/>
+	 		<limit lower="${-20*d2r}" upper="${20*d2r}" effort="10" velocity="10"/>
+	 	</joint>
+
+	 	<!-- hip y rotate (side)-->
+	 	<joint name="hip_s_joint_${side}"
+	 		   type="revolute">
+	 		<parent link="hip_fork_${side}"/>
+	 		<child link="hip_cross_${side}"/>
+	 		<!-- unknown -->
+	 		<origin xyz="0 0 -0.25" rpy="0 0 0"/>
+	 		<axis xyz="0 1 0"/>
+	 		<limit lower="${-11*d2r}" upper="${20*d2r}" effort="10" velocity="10"/>
+	 	</joint>
+
+	 	<!-- hip x rotate (forward)-->
+	 	<joint name="hip_f_joint_${side}"
+	 		   type="revolute">
+	 		<parent link="hip_cross_${side}"/>
+	 		<child link="hip_${side}"/>
+	 		<origin xyz="0 0 0" rpy="0 0 0"/>
+	 		<axis xyz="1 0 0"/>
+	 		<limit lower="${-45*d2r}" upper="${70*d2r}" effort="10" velocity="10"/>
+	 	</joint>
+
+	 	<!-- knee -->
+	 	<joint name="knee_joint_${side}"
+	 		   type="revolute">
+	 		<parent link="hip_${side}"/>
+	 		<child link="shin_${side}"/>
+	 		<origin xyz="0 0 -0.28" rpy="0 0 0"/>
+	 		<axis xyz="1 0 0"/>
+	 		<limit lower="${-140*d2r}" upper="0" effort="10" velocity="10"/>
+	 	</joint>
+
+	 	<!-- ankle x (forward) -->
+	 	<joint name="ankle_f_joint_${side}"
+	 		   type="revolute">
+	 		<parent link="shin_${side}"/>
+	 		<child link="ankle_${side}"/>
+	 		<origin xyz="0 0 -0.28" rpy="0 0 0"/>
+	 		<axis xyz="1 0 0"/>
+	 		<limit lower="${-33*d2r}" upper="${70*d2r}" effort="10" velocity="10"/>
+	 	</joint>
+
+	 	<!-- ankle y (side) -->
+	 	<joint name="ankle_s_joint_${side}"
+	 		   type="revolute">
+	 		<parent link="ankle_${side}"/>
+	 		<child link="foot_${side}"/>
+	 		<origin xyz="0 0 0" rpy="0 0 0"/>
+	 		<axis xyz="0 1 0"/>
+	 		<limit lower="${-20*d2r}" upper="${11*d2r}" effort="10" velocity="10"/>
+	 	</joint>
+
+ 	</xacro:macro>
+
+</robot>
