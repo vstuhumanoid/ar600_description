@@ -13,16 +13,41 @@
 
 		<link name="shoulder_fork_${side}">
 	 		<xacro:meshes file="shoulder_fork_${side}"/>
+	 		<inertial>
+	 			<!-- should be 0.04, but -0.04 fits -->
+	 			<origin xyz="${-0.04 * x_sign} -0.01 0" rpy="0 0 0"/>
+      			<mass value="1.362"/>
+      			<inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+    		</inertial>
+	 	</link>
+
+	 	<link name="shoulder_${side}">
+	 		<xacro:meshes file="shoulder_${side}"/>
+	 		<inertial>
+	 			<origin xyz="0 0 -0.05" rpy="0 0 0"/>
+      			<mass value="1.558"/>
+      			<inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+    		</inertial>
 	 	</link>
 
 	 	<joint name="shoulder_f_joint_${side}"
 	 		   type="revolute">
 	 		<parent link="${parent}"/>
 	 		<child link="shoulder_fork_${side}"/>
-	 		<!-- z unknown -->
-	 		<origin xyz="${1 * x_sign} 0.0276 0" rpy="0 0 0"/>
-	 		<axis xyz="0 0 1"/>
-	 		<limit lower="${-20*d2r}" upper="${20*d2r}" effort="10" velocity="10"/>
+	 		
+	 		<!-- incorrect -->
+	 		<origin xyz="${0.197 * cos(10 * d2r) * x_sign} ${0.197 * sin(10 * d2r)} 0" rpy="0 0 ${10 * d2r * x_sign}"/>
+	 		<axis xyz="1 0 0"/>
+	 		<limit lower="${-15*d2r}" upper="${90*d2r}" effort="10" velocity="10"/>
+	 	</joint>
+
+	 	<joint name="shoulder_s_joint_${side}"
+	 		   type="revolute">
+	 		<parent link="shoulder_fork_${side}"/>
+	 		<child link="shoulder_${side}"/>
+	 		<origin xyz="0 0 0" rpy="0 0 0"/>
+	 		<axis xyz="0 1 0"/>
+	 		<limit lower="0" upper="${105*d2r}" effort="10" velocity="10"/>
 	 	</joint>
 
 	</xacro:macro>

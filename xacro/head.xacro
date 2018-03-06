@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+	<!--
+		Solid Works conversion
+		x <- -x
+		y <-  z
+		z <-  y
+	-->
+
+	<xacro:macro name="head" params="parent"> 
+
+		<link name="neck">
+	 		<xacro:meshes file="neck"/>
+	 	</link>
+	 	<link name="neck_fork">
+	 		<xacro:meshes file="neck_fork"/>
+	 	</link>
+
+	 	<joint name="neck_r_joint"
+	 		   type="revolute">
+	 		<parent link="${parent}"/>
+	 		<child link="neck"/>
+	 		
+	 		<!-- invalid Z -->
+	 		<origin xyz="0 0 0.145" rpy="0 0 0"/>
+	 		<axis xyz="0 0 1"/>
+	 		<limit lower="${-90*d2r}" upper="${90*d2r}" effort="10" velocity="10"/>
+	 	</joint>
+
+	 	<joint name="neck_f_joint"
+	 		   type="revolute">
+	 		<parent link="neck"/>
+	 		<child link="neck_fork"/>
+	 		
+	 		<!-- invalid Z -->
+	 		<origin xyz="0 0 0" rpy="0 0 0"/>
+	 		<axis xyz="1 0 0"/>
+	 		<limit lower="${-20*d2r}" upper="${30*d2r}" effort="10" velocity="10"/>
+	 	</joint>
+
+	</xacro:macro>
+</robot>
