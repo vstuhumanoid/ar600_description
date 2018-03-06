@@ -5,11 +5,18 @@
 	<xacro:property name="M_PI" value="3.14159"/>
 
 	<xacro:include filename="wtf.xacro"/>
+	<xacro:include filename="meshes.xacro"/>
+	<xacro:include filename="left_right.xacro"/>
+
+
 	<xacro:include filename="pelvis.xacro"/>
 	<xacro:include filename="leg.xacro"/>
+	<xacro:include filename="torso.xacro"/>
+	<xacro:include filename="arm.xacro"/>
 
 	<xacro:pelvis/>
 	<xacro:leg parent="base_link" side="left"/>
 	<xacro:leg parent="base_link" side="right"/>
-
+	<xacro:torso parent="base_link"/>
+	<xacro:arm parent="torso" side="left"/>
 </robot>

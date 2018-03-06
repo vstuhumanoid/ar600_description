@@ -1,32 +1,65 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ar600">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+	<!--
+		Solid Works conversion
+		x <- -x
+		y <-  z
+		z <-  y
+	-->
 
 	<xacro:macro name="leg" params="parent side"> 
 
-		<xacro:if value="${side == 'left'}">
-  			<xacro:property name="x_shift" value="-0.088" />
-		</xacro:if>
-		<xacro:if value="${side == 'right'}">
-  			<xacro:property name="x_shift" value="0.088" />
-		</xacro:if>
+		<xacro:left_right side="${side}"/>
 
+		<!-- Links -->
 		<link name="hip_fork_${side}">
-	 		<xacro:wtf/>	 		
+	 		<xacro:meshes file="hip_fork_${side}"/>
+	 		<inertial>
+	 			<origin xyz="0 -0.02 0.07" rpy="0 0 0"/>
+      			<mass value="3.170"/>
+      			<inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+    		</inertial>
 	 	</link>
 	 	<link name="hip_cross_${side}">
-	 		<xacro:wtf/>	 		
+	 		<xacro:meshes file="hip_cross_${side}"/>
+	 		<inertial>
+	 			<origin xyz="${-0.01 * x_sign} -0.03 0" rpy="0 0 0"/>
+      			<mass value="1.799"/>
+      			<inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+    		</inertial>
 	 	</link>
 	 	<link name="hip_${side}">
-	 		<xacro:wtf/>	 		
+	 		<xacro:meshes file="hip_${side}"/>
+	 		<inertial>
+	 			<origin xyz="0 0.01 -0.14" rpy="0 0 0"/>
+      			<mass value="6.779"/>
+      			<inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+    		</inertial>
 	 	</link>
 	 	<link name="shin_${side}">
-	 		<xacro:wtf/>	 		
+	 		<xacro:meshes file="shin_${side}"/>
+	 		<inertial>
+	 			<origin xyz="${0.01 * x_sign} 0 -0.11" rpy="0 0 0"/>
+      			<mass value="1"/>
+      			<inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+    		</inertial>
 	 	</link>
 	 	<link name="ankle_${side}">
-	 		<xacro:wtf/>	 		
+	 		<xacro:meshes file="ankle_${side}"/>
+	 		<inertial>
+	 			<origin xyz="${-0.01 * x_sign} -0.02 0" rpy="0 0 0"/>
+      			<mass value="1"/>
+      			<inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+    		</inertial>
 	 	</link>
 	 	<link name="foot_${side}">
-	 		<xacro:wtf/>	 		
+	 		<xacro:meshes file="foot_${side}"/>
+	 		<inertial>
+	 			<origin xyz="0 0.03 -0.06" rpy="0 0 0"/>
+      			<mass value="1"/>
+      			<inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+    		</inertial>
 	 	</link>
 
 
@@ -36,7 +69,7 @@
 	 		<parent link="${parent}"/>
 	 		<child link="hip_fork_${side}"/>
 	 		<!-- z unknown -->
-	 		<origin xyz="${x_shift} 0.0276 0" rpy="0 0 0"/>
+	 		<origin xyz="${0.088 * x_sign} 0.0276 0" rpy="0 0 0"/>
 	 		<axis xyz="0 0 1"/>
 	 		<limit lower="${-20*d2r}" upper="${20*d2r}" effort="10" velocity="10"/>
 	 	</joint>
@@ -46,8 +79,8 @@
 	 		   type="revolute">
 	 		<parent link="hip_fork_${side}"/>
 	 		<child link="hip_cross_${side}"/>
-	 		<!-- unknown -->
-	 		<origin xyz="0 0 -0.25" rpy="0 0 0"/>
+	 		<!-- unknown z-->
+	 		<origin xyz="0 0 0" rpy="0 0 0"/>
 	 		<axis xyz="0 1 0"/>
 	 		<limit lower="${-11*d2r}" upper="${20*d2r}" effort="10" velocity="10"/>
 	 	</joint>
