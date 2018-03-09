@@ -23,6 +23,7 @@
       				     izz="1.0"/>
     		</inertial>
 	 	</link>
+
 	 	<link name="hip_cross_${side}">
 	 		<xacro:meshes file="hip_cross_${side}"/>
 	 		<inertial>
@@ -33,6 +34,7 @@
       				     izz="1.0"/>
     		</inertial>
 	 	</link>
+
 	 	<link name="hip_${side}">
 	 		<xacro:meshes file="hip_${side}"/>
 	 		<inertial>
@@ -43,6 +45,7 @@
       				     izz="1.0"/>
     		</inertial>
 	 	</link>
+
 	 	<link name="shin_${side}">
 	 		<xacro:meshes file="shin_${side}"/>
 	 		<inertial>
@@ -53,6 +56,7 @@
       				     izz="1.0"/>
     		</inertial>
 	 	</link>
+
 	 	<link name="ankle_${side}">
 	 		<xacro:meshes file="ankle_${side}"/>
 	 		<inertial>
@@ -63,6 +67,7 @@
       				     izz="1.0"/>
     		</inertial>
 	 	</link>
+
 	 	<link name="foot_${side}">
 	 		<xacro:meshes file="foot_${side}"/>
 	 		<inertial>
@@ -91,8 +96,8 @@
 	 		<parent link="hip_fork_${side}"/>
 	 		<child link="hip_cross_${side}"/>	 		
 	 		<origin xyz="0 0 0" rpy="0 0 0"/>
-	 		<axis xyz="0 1 0"/>
-	 		<limit lower="${-11*d2r}" upper="${20*d2r}" effort="10" velocity="10"/>
+	 		<axis xyz="0 1 0"/>	 		
+	 		<xacro:lr_limit side="${side}" lower="${-11*d2r}" upper="${20*d2r}" effort="10" velocity="10"/>
 	 	</joint>
 
 	 	<!-- hip x rotate (forward)-->
@@ -102,7 +107,7 @@
 	 		<child link="hip_${side}"/>
 	 		<origin xyz="0 0 0" rpy="0 0 0"/>
 	 		<axis xyz="1 0 0"/>
-	 		<limit lower="${-45*d2r}" upper="${70*d2r}" effort="10" velocity="10"/>
+	 		<limit lower="${-45*d2r}" upper="${70*d2r}" effort="10" velocity="10"/>-	 		
 	 	</joint>
 
 	 	<!-- knee -->
@@ -131,8 +136,8 @@
 	 		<parent link="ankle_${side}"/>
 	 		<child link="foot_${side}"/>
 	 		<origin xyz="0 0 0" rpy="0 0 0"/>
-	 		<axis xyz="0 1 0"/>
-	 		<limit lower="${-20*d2r}" upper="${11*d2r}" effort="10" velocity="10"/>
+	 		<axis xyz="0 1 0"/>	 		
+	 		<xacro:lr_limit side="${side}" lower="${-20*d2r}" upper="${11*d2r}" effort="10" velocity="10"/>
 	 	</joint>
 
  	</xacro:macro>

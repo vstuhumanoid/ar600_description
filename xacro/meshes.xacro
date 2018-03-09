@@ -1,4 +1,6 @@
 <?xml version="1.0"?>
+
+<!-- Create visual and collision with given mesh -->
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 	<xacro:macro name="meshes" params="file xyz:='0 0 0' rpy:='0 0 0'">
 		<visual>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<!-- Revolute joint limit changing based on left/right side to allow mirror part -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+	<xacro:macro name="lr_limit" params="side lower upper effort velocity">
+		<xacro:if value="${side == 'left'}">
+  			<limit lower="${lower}" upper="${upper}" effort="${effort}" velocity="${velocity}"/>
+		</xacro:if>
+		<xacro:if value="${side == 'right'}">
+  			<limit lower="${-upper}" upper="${-lower}" effort="${effort}" velocity="${velocity}"/>
+		</xacro:if>	
+ 	</xacro:macro>
+
+</robot>

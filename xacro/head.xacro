@@ -12,32 +12,96 @@
 
 		<link name="neck">
 	 		<xacro:meshes file="neck"/>
-	 	</link>
-	 	<link name="neck_fork">
-	 		<xacro:meshes file="neck_fork"/>
+	 		<inertial>
+	 			<origin xyz="0 -0.02 0.02" rpy="0 0 0"/>
+      			<mass value="0.633"/>
+      			<inertia ixx="1.0" ixy="1.0" ixz="1.0"
+      				     iyy="1.0" iyz="1.0"
+      				     izz="1.0"/>
+    		</inertial>
 	 	</link>
 
-	 	<joint name="neck_r_joint"
+	 	<link name="neck_fork">
+	 		<xacro:meshes file="neck_fork"/>
+	 		<inertial>
+	 			<!-- z unknown -->
+	 			<origin xyz="0.01 -0.01 -0.02" rpy="0 0 0"/>
+      			<mass value="0.444"/>
+      			<inertia ixx="1.0" ixy="1.0" ixz="1.0"
+      				     iyy="1.0" iyz="1.0"
+      				     izz="1.0"/>
+    		</inertial>
+	 	</link>
+
+	 	<link name="neck_cross">
+	 		<xacro:meshes file="neck_cross"/>
+	 		<inertial>
+	 			<origin xyz="-0.01 0.01 0" rpy="0 0 0"/>
+      			<mass value="0.320"/>
+      			<inertia ixx="1.0" ixy="1.0" ixz="1.0"
+      				     iyy="1.0" iyz="1.0"
+      				     izz="1.0"/>
+    		</inertial>
+	 	</link>
+
+	 	<link name="head">
+	 		<xacro:meshes file="head"/>
+	 		<inertial>
+	 			<origin xyz="0 0.04 0.06" rpy="0 0 0"/>
+      			<mass value="1.258"/>
+      			<inertia ixx="1.0" ixy="1.0" ixz="1.0"
+      				     iyy="1.0" iyz="1.0"
+      				     izz="1.0"/>
+    		</inertial>
+	 	</link>
+
+
+	 	<!-- neck x (forward) -->
+	 	<joint name="neck_f_joint"
 	 		   type="revolute">
 	 		<parent link="${parent}"/>
 	 		<child link="neck"/>
 	 		
-	 		<!-- invalid Z -->
-	 		<origin xyz="0 0 0.145" rpy="0 0 0"/>
-	 		<axis xyz="0 0 1"/>
-	 		<limit lower="${-90*d2r}" upper="${90*d2r}" effort="10" velocity="10"/>
+	 		<!-- unknown -->
+	 		<origin xyz="0 0.041 0.016" rpy="0 0 0"/>
+	 		<axis xyz="-1 0 0"/>
+	 		<limit lower="${0*d2r}" upper="${60*d2r}" effort="10" velocity="10"/>
 	 	</joint>
 
-	 	<joint name="neck_f_joint"
-	 		   type="revolute">
-	 		<parent link="neck"/>
+	 	<!-- head z (rotate) -->
+		<joint name="head_r_joint"
+			   type="revolute">
+			<parent link="neck"/>
 	 		<child link="neck_fork"/>
-	 		
-	 		<!-- invalid Z -->
+
+	 		<!-- unknown -->
+	 		<origin xyz="0 -0.034 0.13" rpy="0 0 0"/>
+	 		<axis xyz="0 0 1"/>
+	 		<limit lower="${-90*d2r}" upper="${90*d2r}" effort="10" velocity="10"/>
+		</joint>
+
+		<!-- head y (side) -->
+		<joint name="head_s_joint"
+			   type="revolute">
+			<parent link="neck_fork"/>
+	 		<child link="neck_cross"/>
+	 		<origin xyz="0 0 0" rpy="0 0 0"/>
+	 		<axis xyz="0 1 0"/>
+	 		<limit lower="${-15*d2r}" upper="${15*d2r}" effort="10" velocity="10"/>
+		</joint>
+
+		<!-- head x (forward) -->
+		<joint name="head_f_joint"
+			   type="revolute">
+			<parent link="neck_cross"/>
+	 		<child link="head"/>
+	 		<!-- z unknown -->
 	 		<origin xyz="0 0 0" rpy="0 0 0"/>
 	 		<axis xyz="1 0 0"/>
 	 		<limit lower="${-20*d2r}" upper="${30*d2r}" effort="10" velocity="10"/>
-	 	</joint>
+		</joint>
+
+	 	
 
 	</xacro:macro>
 </robot>
