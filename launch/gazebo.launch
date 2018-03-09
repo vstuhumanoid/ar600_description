@@ -1,0 +1,11 @@
+<launch>
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+		<arg name="paused" value="True"/>
+		<arg name="use_sim_time" value="True"/>
+	</include>
+
+	<param name="robot_description" command="$(find xacro)/xacro --inorder '$(find ar600_description)/xacro/ar600.xacro'"/>
+
+	<node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+		  args="-urdf -model a600 -z 1 -param robot_description"/> 
+</launch>

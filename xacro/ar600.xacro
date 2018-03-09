@@ -3,8 +3,7 @@
 
 	<xacro:property name="d2r" value="0.01745329251994329577"/>
 	<xacro:property name="M_PI" value="3.14159"/>
-
-	<xacro:include filename="wtf.xacro"/>
+	
 	<xacro:include filename="meshes.xacro"/>
 	<xacro:include filename="left_right.xacro"/>
 
@@ -21,5 +20,5 @@
 	<xacro:torso parent="base_link"/>
 	<xacro:arm parent="torso" side="left"/>
 	<xacro:arm parent="torso" side="right"/>
-	<xacro:head parent="torso"/>
+	<!--<xacro:head parent="torso"/>-->
 </robot>

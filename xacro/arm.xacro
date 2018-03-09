@@ -17,7 +17,9 @@
 	 			<!-- should be 0.04, but -0.04 fits -->
 	 			<origin xyz="${-0.04 * x_sign} -0.01 0" rpy="0 0 0"/>
       			<mass value="1.362"/>
-      			<inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+      			<inertia ixx="1.0" ixy="1.0" ixz="1.0"
+      				     iyy="1.0" iyz="1.0"
+      				     izz="1.0"/>
     		</inertial>
 	 	</link>
 
@@ -26,7 +28,9 @@
 	 		<inertial>
 	 			<origin xyz="0 0 -0.05" rpy="0 0 0"/>
       			<mass value="1.558"/>
-      			<inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+      			<inertia ixx="1.0" ixy="1.0" ixz="1.0"
+      				     iyy="1.0" iyz="1.0"
+      				     izz="1.0"/>
     		</inertial>
 	 	</link>
 
