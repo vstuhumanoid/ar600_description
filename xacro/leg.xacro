@@ -14,7 +14,7 @@
 
 		<!-- Links -->
 		<link name="hip_fork_${side}">
-	 		<xacro:meshes file="hip_fork_${side}"/>
+	 		<xacro:meshes file="hip_fork_${side}" collision="True"/>
 	 		<inertial>
 	 			<origin xyz="0 -0.02 0.07" rpy="0 0 0"/>
       			<mass value="3.170"/>
@@ -36,7 +36,7 @@
 	 	</link>
 
 	 	<link name="hip_${side}">
-	 		<xacro:meshes file="hip_${side}"/>
+	 		<xacro:meshes file="hip_${side}" collision="True"/>
 	 		<inertial>
 	 			<origin xyz="0 0.01 -0.14" rpy="0 0 0"/>
       			<mass value="6.779"/>
@@ -47,7 +47,7 @@
 	 	</link>
 
 	 	<link name="shin_${side}">
-	 		<xacro:meshes file="shin_${side}"/>
+	 		<xacro:meshes file="shin_${side}" collision="True"/>
 	 		<inertial>
 	 			<origin xyz="${0.01 * x_sign} 0 -0.11" rpy="0 0 0"/>
       			<mass value="1"/>
@@ -69,7 +69,7 @@
 	 	</link>
 
 	 	<link name="foot_${side}">
-	 		<xacro:meshes file="foot_${side}"/>
+	 		<xacro:meshes file="foot_${side}" collision="True"/>
 	 		<inertial>
 	 			<origin xyz="0 0.03 -0.06" rpy="0 0 0"/>
       			<mass value="1"/>

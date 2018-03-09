@@ -12,7 +12,7 @@
 		<xacro:left_right side="${side}"/>
 
 		<link name="shoulder_fork_${side}">
-	 		<xacro:meshes file="shoulder_fork_${side}"/>
+	 		<xacro:meshes file="shoulder_fork_${side}" collision="True"/>
 	 		<inertial>
 	 			<!-- should be 0.04, but -0.04 fits -->
 	 			<origin xyz="${-0.04 * x_sign} -0.01 0" rpy="0 0 0"/>
@@ -24,7 +24,7 @@
 	 	</link>
 
 	 	<link name="shoulder_${side}">
-	 		<xacro:meshes file="shoulder_${side}"/>
+	 		<xacro:meshes file="shoulder_${side}" collision="True"/>
 	 		<inertial>
 	 			<origin xyz="0 0 -0.05" rpy="0 0 0"/>
       			<mass value="1.558"/>

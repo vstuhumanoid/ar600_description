@@ -2,7 +2,7 @@
 
 <!-- Create visual and collision with given mesh -->
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-	<xacro:macro name="meshes" params="file xyz:='0 0 0' rpy:='0 0 0'">
+	<xacro:macro name="meshes" params="file xyz:='0 0 0' rpy:='0 0 0' collision='False'">
 		<visual>
  			<origin xyz="${xyz}" rpy="${rpy}"/>
  			<geometry>
@@ -12,5 +12,13 @@
        			<color rgba="1.0 1.0 1.0 1.0"/>
      		</material>
 	 	</visual>
+	 	<xacro:if value="${collision}">
+	 		<collision>
+	 			<origin xyz="${xyz}" rpy="${rpy}"/>
+	 			<geometry>
+ 					<mesh filename="package://ar600_description/meshes/collision/${file}.stl"/>
+ 				</geometry>
+	 		</collision>
+	 	</xacro:if>
 	</xacro:macro>
 </robot>

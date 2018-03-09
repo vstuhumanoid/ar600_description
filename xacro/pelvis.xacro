@@ -12,7 +12,7 @@
 
 		<link name="base_link">
 			<!-- this shift is WTF and hack -->
-	 		<xacro:meshes file="pelvis" xyz="0 0.0276 0"/>
+	 		<xacro:meshes file="pelvis" xyz="0 0.0276 0" collision="True"/>
 	 		<inertial>
 	 			<!-- z origin is incorrect -->
 	 			<origin xyz="0 0 0.15" rpy="0 0 0"/>
@@ -21,12 +21,6 @@
       				     iyy="1.0" iyz="1.0"
       				     izz="1.0"/>
     		</inertial>
-    		<collision>
-    			<origin xyz="0 0 0.5" rpy="0 0 0"/>
-				<geometry>
-					<box size="0.5 0.5 0.5"/>
-				</geometry>
-			</collision>
 	 	</link>
 
 

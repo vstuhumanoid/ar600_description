@@ -45,7 +45,7 @@
 	 	</link>
 
 	 	<link name="head">
-	 		<xacro:meshes file="head"/>
+	 		<xacro:meshes file="head" collision="True"/>
 	 		<inertial>
 	 			<origin xyz="0 0.04 0.06" rpy="0 0 0"/>
       			<mass value="1.258"/>

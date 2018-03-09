@@ -3,7 +3,7 @@
 
 	<xacro:macro name="torso" params="parent"> 
 		<link name="torso">
-	 		<xacro:meshes file="torso"/>
+	 		<xacro:meshes file="torso" collision="True"/>
 	 		<inertial>
 	 			<!-- origin is incorrect -->
 	 			<origin xyz="0 0 -0.16" rpy="0 0 0"/>
