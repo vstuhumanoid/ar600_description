@@ -56,5 +56,8 @@
 	 		<xacro:lr_limit side="${side}" lower="0" upper="${105*d2r}" effort="10" velocity="10"/>
 	 	</joint>
 
+	 	<xacro:transmission_block joint_name="shoulder_f_joint_${side}"/>
+	 	<xacro:transmission_block joint_name="shoulder_s_joint_${side}"/>
+
 	</xacro:macro>
 </robot>

@@ -24,6 +24,7 @@
 	 		<limit lower="${-45*d2r}" upper="${45*d2r}" effort="10" velocity="10"/>
 	 	</joint>
 
-	</xacro:macro>
+	 	<xacro:transmission_block joint_name="torso_r_joint"/>
 
+	</xacro:macro>
 </robot>

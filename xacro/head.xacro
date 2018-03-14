@@ -101,6 +101,12 @@
 	 		<limit lower="${-20*d2r}" upper="${30*d2r}" effort="10" velocity="10"/>
 		</joint>
 
+
+		<xacro:transmission_block joint_name="neck_f_joint"/>
+		<xacro:transmission_block joint_name="head_r_joint"/>
+		<xacro:transmission_block joint_name="head_s_joint"/>
+		<xacro:transmission_block joint_name="head_f_joint"/>
+
 	 	
 
 	</xacro:macro>

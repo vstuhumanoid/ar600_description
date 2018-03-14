@@ -140,6 +140,13 @@
 	 		<xacro:lr_limit side="${side}" lower="${-20*d2r}" upper="${11*d2r}" effort="10" velocity="10"/>
 	 	</joint>
 
+	 	<xacro:transmission_block joint_name="hip_r_joint_${side}"/>
+	 	<xacro:transmission_block joint_name="hip_s_joint_${side}"/>
+	 	<xacro:transmission_block joint_name="hip_f_joint_${side}"/>
+	 	<xacro:transmission_block joint_name="knee_joint_${side}"/>
+	 	<xacro:transmission_block joint_name="ankle_f_joint_${side}"/>
+	 	<xacro:transmission_block joint_name="ankle_s_joint_${side}"/>
+
  	</xacro:macro>
 
 </robot>
