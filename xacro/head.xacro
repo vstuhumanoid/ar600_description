@@ -13,11 +13,11 @@
 		<link name="neck">
 	 		<xacro:meshes file="neck"/>
 	 		<inertial>
-	 			<origin xyz="0 -0.02 0.02" rpy="0 0 0"/>
+	 			<origin xyz="-0.02 0.00 0.02" rpy="0 0 0"/>
       			<mass value="0.633"/>
-      			<inertia ixx="1.0" ixy="1.0" ixz="1.0"
-      				     iyy="1.0" iyz="1.0"
-      				     izz="1.0"/>
+      			<inertia ixx="0.000884" ixy="0.000001" ixz="-0.000246"
+      				                    iyy="0.000982" iyz="0.000500"
+      				                                   izz="0.000627"/>
     		</inertial>
 	 	</link>
 
@@ -27,31 +27,31 @@
 	 			<!-- z unknown -->
 	 			<origin xyz="0.01 -0.01 -0.02" rpy="0 0 0"/>
       			<mass value="0.444"/>
-      			<inertia ixx="1.0" ixy="1.0" ixz="1.0"
-      				     iyy="1.0" iyz="1.0"
-      				     izz="1.0"/>
+      			<inertia ixx="0.000285" ixy="-0.000016" ixz="0.000073"
+      				                    iyy="0.000401"  iyz="-0.000021"
+      				                                    izz="0.000238"/>
     		</inertial>
 	 	</link>
 
 	 	<link name="neck_cross">
 	 		<xacro:meshes file="neck_cross"/>
 	 		<inertial>
-	 			<origin xyz="-0.01 0.01 0" rpy="0 0 0"/>
+	 			<origin xyz="0.01 0.01 0" rpy="0 0 0"/>
       			<mass value="0.320"/>
-      			<inertia ixx="1.0" ixy="1.0" ixz="1.0"
-      				     iyy="1.0" iyz="1.0"
-      				     izz="1.0"/>
+      			<inertia ixx="0.000054" ixy="-0.000002" ixz="0.000000"
+      				                    iyy="0.000054"  iyz="0.000000"
+      				                                    izz="0.000092"/>
     		</inertial>
 	 	</link>
 
 	 	<link name="head">
 	 		<xacro:meshes file="head" collision="True"/>
 	 		<inertial>
-	 			<origin xyz="0 0.04 0.06" rpy="0 0 0"/>
+	 			<origin xyz="0.04 0.00 0.06" rpy="0 0 0"/>
       			<mass value="1.258"/>
-      			<inertia ixx="1.0" ixy="1.0" ixz="1.0"
-      				     iyy="1.0" iyz="1.0"
-      				     izz="1.0"/>
+      			<inertia ixx="0.005118" ixy="-0.000058" ixz="-0.000120"
+      				                    iyy="0.005112"  iyz="-0.000172"
+      				                                    izz="0.005643"/>
     		</inertial>
 	 	</link>
 

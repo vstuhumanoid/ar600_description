@@ -3,9 +3,9 @@
 
 	<!--
 		Solid Works conversion
-		x <- -x
-		y <-  z
-		z <-  y
+		x <- z
+		y <- x
+		z <- z
 	-->
 
 	<xacro:macro name="pelvis">
@@ -17,9 +17,9 @@
 	 			<!-- z origin is incorrect -->
 	 			<origin xyz="0 0 0.15" rpy="0 0 0"/>
       			<mass value="5.045"/>
-      			<inertia ixx="1.0" ixy="1.0" ixz="1.0"
-      				     iyy="1.0" iyz="1.0"
-      				     izz="1.0"/>
+      			<inertia ixx="0.031053" ixy="0.000014" ixz="-0.000227"
+      				                    iyy="0.012429" iyz="-0.000016"
+      				                                   izz="0.032811"/>
     		</inertial>
 	 	</link>
 

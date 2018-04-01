@@ -15,22 +15,22 @@
 	 		<xacro:meshes file="shoulder_fork_${side}" collision="True"/>
 	 		<inertial>
 	 			<!-- should be 0.04, but -0.04 fits -->
-	 			<origin xyz="${-0.04 * x_sign} -0.01 0" rpy="0 0 0"/>
+	 			<origin xyz="${-0.01 * x_sign} -0.04 0.00" rpy="0 0 0"/>
       			<mass value="1.362"/>
-      			<inertia ixx="1.0" ixy="1.0" ixz="1.0"
-      				     iyy="1.0" iyz="1.0"
-      				     izz="1.0"/>
+      			<inertia ixx="0.001569" ixy="-0.000014" ixz="0.000068"
+      				                    iyy="0.001358"  iyz="-0.000058"
+      				                                    izz="0.002036"/>
     		</inertial>
 	 	</link>
 
 	 	<link name="shoulder_${side}">
 	 		<xacro:meshes file="shoulder_${side}" collision="True"/>
 	 		<inertial>
-	 			<origin xyz="0 0 -0.05" rpy="0 0 0"/>
+	 			<origin xyz="0.00 0.00 -0.05" rpy="0 0 0"/>
       			<mass value="1.558"/>
-      			<inertia ixx="1.0" ixy="1.0" ixz="1.0"
-      				     iyy="1.0" iyz="1.0"
-      				     izz="1.0"/>
+      			<inertia ixx="0.002694" ixy="0.000468" ixz="-0.000004"
+      				                    iyy="0.001001" iyz="-0.000005"
+      				                                   izz="0.002996"/>
     		</inertial>
 	 	</link>
 
