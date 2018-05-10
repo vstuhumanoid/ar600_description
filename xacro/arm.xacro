@@ -52,7 +52,7 @@
 	 		<parent link="shoulder_fork_${side}"/>
 	 		<child link="shoulder_${side}"/>
 	 		<origin xyz="0 0 0" rpy="0 0 0"/>
-	 		<axis xyz="0 1 0"/>	 		
+	 		<axis xyz="0 ${-x_sign} 0"/>	 		
 	 		<xacro:lr_limit side="${side}" lower="0" upper="${105*d2r}" effort="10" velocity="10"/>
 	 	</joint>
 

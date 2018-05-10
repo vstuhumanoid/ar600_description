@@ -86,7 +86,7 @@
 	 		<parent link="${parent}"/>
 	 		<child link="hip_fork_${side}"/>	 		
 	 		<origin xyz="${0.088 * x_sign} 0.0276 0" rpy="0 0 0"/>
-	 		<axis xyz="0 0 1"/>
+	 		<axis xyz="0 0 ${-x_sign}"/>
 	 		<limit lower="${-20*d2r}" upper="${20*d2r}" effort="10" velocity="10"/>
 	 	</joint>
 
@@ -96,7 +96,7 @@
 	 		<parent link="hip_fork_${side}"/>
 	 		<child link="hip_cross_${side}"/>	 		
 	 		<origin xyz="0 0 0" rpy="0 0 0"/>
-	 		<axis xyz="0 1 0"/>	 		
+	 		<axis xyz="0 ${-x_sign} 0"/>	 		
 	 		<xacro:lr_limit side="${side}" lower="${-11*d2r}" upper="${20*d2r}" effort="10" velocity="10"/>
 	 	</joint>
 
@@ -136,7 +136,7 @@
 	 		<parent link="ankle_${side}"/>
 	 		<child link="foot_${side}"/>
 	 		<origin xyz="0 0 0" rpy="0 0 0"/>
-	 		<axis xyz="0 1 0"/>	 		
+	 		<axis xyz="0 ${-x_sign} 0"/>	 		
 	 		<xacro:lr_limit side="${side}" lower="${-20*d2r}" upper="${11*d2r}" effort="10" velocity="10"/>
 	 	</joint>
 
