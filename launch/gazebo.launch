@@ -1,9 +1,10 @@
 <launch>
-	<include file="$(find gazebo_ros)/launch/empty_world.launch">
-		<arg name="paused" value="True"/>
-		<arg name="use_sim_time" value="True"/>
-	</include>
+	<group ns="ar600">
+		<include file="$(find gazebo_ros)/launch/empty_world.launch">
+			<arg name="paused" value="True"/>
+			<arg name="use_sim_time" value="True"/>
+		</include>
 
-	<include file="$(find ar600_description)/launch/spawn.launch">
-	</include>
+		<include file="$(find ar600_description)/launch/spawn.launch"/>
+	</group>
 </launch>

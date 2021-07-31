@@ -8,7 +8,7 @@ XACRO & URDF model for humanoid robot AR600
 ## Features:
  - XACRO model of robot
  - Visual and collision meshes
- - Mass, CoMs and intertia properties
+ - Mass, CoMs and inertia properties
  - Gazebo-ready
 
 

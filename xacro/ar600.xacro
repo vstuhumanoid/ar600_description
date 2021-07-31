@@ -2,7 +2,6 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ar600">
 
 	<xacro:property name="d2r" value="0.01745329251994329577"/>
-	<xacro:property name="M_PI" value="3.14159"/>
 	
 	<xacro:include filename="meshes.xacro"/>
 	<xacro:include filename="left_right.xacro"/>
@@ -12,23 +11,23 @@
 
 	<xacro:include filename="pelvis.xacro"/>
 	<xacro:include filename="leg.xacro"/>
-	<xacro:include filename="torso.xacro"/>
-	<xacro:include filename="arm.xacro"/>
-	<xacro:include filename="head.xacro"/>
+	<!-- <xacro:include filename="torso.xacro"/> -->
+	<!-- <xacro:include filename="arm.xacro"/> -->
+	<!-- <xacro:include filename="head.xacro"/> -->
 
 	<xacro:pelvis/>
+	<!-- Pelvis - base_link -->
 	<xacro:leg parent="base_link" side="left"/>
 	<xacro:leg parent="base_link" side="right"/>
-	<xacro:torso parent="base_link"/>
-	<xacro:arm parent="torso" side="left"/>
-	<xacro:arm parent="torso" side="right"/>
-	<xacro:head parent="torso"/>
+	<!-- <xacro:torso parent="base_link"/> -->
+	<!-- <xacro:arm parent="torso" side="left"/> -->
+	<!-- <xacro:arm parent="torso" side="right"/> -->
+	<!-- <xacro:head parent="torso"/> -->
 
-	<!-- ros_control plugin -->
-  	<!--<gazebo>
+  	<gazebo>
     	<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      	<robotNamespace>/ar600</robotNamespace>
+      	<!-- <robotNamespace>/ar600</robotNamespace> -->
     	</plugin>
-  	</gazebo>-->
+  	</gazebo>
 
 </robot>

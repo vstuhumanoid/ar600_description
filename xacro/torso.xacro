@@ -14,14 +14,13 @@
     		</inertial>
 	 	</link>
 
-	 	<joint name="torso_r_joint"
-	 		   type="revolute">
+	 	<joint name="torso_r_joint" type="revolute">
 	 		<parent link="${parent}"/>
 	 		<child link="torso"/>
 	 		<!-- z unknown -->
 	 		<origin xyz="0 0 0.46" rpy="0 0 0"/>
 	 		<axis xyz="0 0 1"/>
-	 		<limit lower="${-45*d2r}" upper="${45*d2r}" effort="10" velocity="10"/>
+	 		<limit lower="${-45*d2r}" upper="${45*d2r}" effort="50" velocity="10"/>
 	 	</joint>
 
 	 	<xacro:transmission_block joint_name="torso_r_joint"/>

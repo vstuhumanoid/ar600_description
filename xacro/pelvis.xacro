@@ -16,10 +16,10 @@
 	 		<inertial>
 	 			<!-- z origin is incorrect -->
 	 			<origin xyz="0 0 0.15" rpy="0 0 0"/>
-      			<mass value="5.045"/>
-      			<inertia ixx="0.031053" ixy="0.000014" ixz="-0.000227"
-      				                    iyy="0.012429" iyz="-0.000016"
-      				                                   izz="0.032811"/>
+      			<mass value="4.127"/>
+      			<inertia ixx="0.011960" ixy="-0.000003" ixz="0.000002"
+      				                    iyy="0.028330" iyz="0.000108"
+      				                                   izz="0.033849"/>
     		</inertial>
 	 	</link>
 
