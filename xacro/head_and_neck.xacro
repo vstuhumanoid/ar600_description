@@ -8,16 +8,16 @@
 		z <-  y
 	-->
 
-	<xacro:macro name="head" params="parent"> 
+	<xacro:macro name="head_and_neck" params="parent"> 
 
 		<link name="neck">
 	 		<xacro:meshes file="neck"/>
 	 		<inertial>
-	 			<origin xyz="-0.02 0.00 0.02" rpy="0 0 0"/>
-      			<mass value="0.633"/>
-      			<inertia ixx="0.000884" ixy="0.000001" ixz="-0.000246"
-      				                    iyy="0.000982" iyz="0.000500"
-      				                                   izz="0.000627"/>
+	 			<origin xyz="-0.00 0.00 0.02" rpy="0 0 0"/>
+      	<mass value="0.657"/>
+      	<inertia ixx="0.001201" ixy="0.000000" ixz="-0.000000"
+      				                  iyy="0.001020" iyz="0.000300"
+      				                                 izz="0.000718"/>
     		</inertial>
 	 	</link>
 
@@ -25,36 +25,35 @@
 	 		<xacro:meshes file="neck_fork"/>
 	 		<inertial>
 	 			<!-- z unknown -->
-	 			<origin xyz="0.01 -0.01 -0.02" rpy="0 0 0"/>
-      			<mass value="0.444"/>
-      			<inertia ixx="0.000285" ixy="-0.000016" ixz="0.000073"
-      				                    iyy="0.000401"  iyz="-0.000021"
-      				                                    izz="0.000238"/>
+	 			<origin xyz="0 -0.01 -0.02" rpy="0 0 0"/>
+      	<mass value="0.016"/>
+      	<inertia ixx="0.000013" ixy="-0.000000" ixz="0.000000"
+      				                  iyy="0.000006"  iyz="0.000000"
+      				                                  izz="0.000012"/>
     		</inertial>
 	 	</link>
 
 	 	<link name="neck_cross">
 	 		<xacro:meshes file="neck_cross"/>
 	 		<inertial>
-	 			<origin xyz="0.01 0.01 0" rpy="0 0 0"/>
-      			<mass value="0.320"/>
-      			<inertia ixx="0.000054" ixy="-0.000002" ixz="0.000000"
-      				                    iyy="0.000054"  iyz="0.000000"
-      				                                    izz="0.000092"/>
+	 			<origin xyz="0 0 0" rpy="0 0 0"/>
+      	<mass value="0.140"/>
+      	<inertia ixx="0.000026" ixy="0.000000" ixz="0.000000"
+      				                  iyy="0.000256" iyz="0.000000"
+      				                                 izz="0.000266"/>
     		</inertial>
 	 	</link>
 
 	 	<link name="head">
-	 		<xacro:meshes file="head" collision="True"/>
+	 		<xacro:meshes file="head"/>
 	 		<inertial>
-	 			<origin xyz="0.04 0.00 0.06" rpy="0 0 0"/>
-      			<mass value="1.258"/>
-      			<inertia ixx="0.005118" ixy="-0.000058" ixz="-0.000120"
-      				                    iyy="0.005112"  iyz="-0.000172"
-      				                                    izz="0.005643"/>
-    		</inertial>
+	 			<origin xyz="0.00 0.00 0.06" rpy="0 0 0"/>
+      		<mass value="5.515"/>
+      		<inertia ixx="0.033638" ixy="0.000000" ixz="0.000001"
+      				                    iyy="0.031846"  iyz="0.002895"
+      				                                    izz="0.138931"/>
+    	</inertial>
 	 	</link>
-
 
 	 	<!-- neck x (forward) -->
 	 	<joint name="neck_f_joint"

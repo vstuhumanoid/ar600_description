@@ -1,0 +1,13 @@
+<launch>
+    <!-- This helper launch file is used to view hexapod model in RViz-->
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find ar600_description)/xacro/ar600.xacro'" />
+
+    <!-- Combine joint values -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+<!-- Send joint values -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
+        <param name="use_gui" value="False" />
+    </node>
+    <!-- Show in Rviz -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ar600_description)/config/config_view.rviz"/>
+</launch>

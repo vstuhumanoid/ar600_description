@@ -11,9 +11,9 @@
 
 	<xacro:include filename="pelvis.xacro"/>
 	<xacro:include filename="leg.xacro"/>
-	<!-- <xacro:include filename="torso.xacro"/> -->
+	<xacro:include filename="torso.xacro"/>
 	<!-- <xacro:include filename="arm.xacro"/> -->
-	<!-- <xacro:include filename="head.xacro"/> -->
+	<xacro:include filename="head_and_neck.xacro"/>
 
 	<xacro:pelvis/>
 	<!-- Pelvis - base_link -->
@@ -22,7 +22,7 @@
 	<!-- <xacro:torso parent="base_link"/> -->
 	<!-- <xacro:arm parent="torso" side="left"/> -->
 	<!-- <xacro:arm parent="torso" side="right"/> -->
-	<!-- <xacro:head parent="torso"/> -->
+	<!-- <xacro:head_and_neck parent="torso"/> -->
 
   	<gazebo>
     	<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">

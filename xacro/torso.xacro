@@ -7,10 +7,10 @@
 	 		<inertial>
 	 			<!-- origin is incorrect -->
 	 			<origin xyz="0 0 -0.09" rpy="0 0 0"/>
-      			<mass value="29.642"/>
-      			<inertia ixx="0.118418" ixy="-0.000174" ixz="0.001227"
-      				                    iyy="0.091310"  iyz="-0.000488"
-      				                                    izz="0.061124"/>
+      			<mass value="13.420"/>
+      			<inertia ixx="0.141741" ixy="0.000000" ixz="0.000001"
+      				                    iyy="0.178527"  iyz="0.003353"
+      				                                    izz="0.107042"/>
     		</inertial>
 	 	</link>
 

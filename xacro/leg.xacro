@@ -18,7 +18,7 @@
 	 		<inertial>
 	 			<origin xyz="${-0.02 * x_sign} 0 0.07" rpy="0 0 0"/>
       			<mass value="0.907"/>
-      			<inertia ixx="0.004196" ixy="-0.000201" ixz="-0.000014"
+      			<inertia ixx="0.004196" ixy="${-x_sign * 0.000201}" ixz="${-x_sign * 0.000014}"
       				                    iyy="0.001524"  iyz="-0.000269"
       				                                    izz="0.003769"/>
     		</inertial>
@@ -40,9 +40,6 @@
 	 		<inertial>
 	 			<origin xyz="${0.01 * x_sign} 0.00 -0.14" rpy="0 0 0"/>
       			<mass value="4.04"/>
-      			<!-- <inertia ixx="0.037615" ixy="0.000139" ixz="-0.000896"
-      				                    iyy="0.031299" iyz="-0.000182"
-      				                                   izz="0.012270"/> -->
 						<inertia ixx="0.035175" ixy="-0.000067" ixz="0.000877"
       				                    iyy="0.040670" iyz="-0.000379"
       				                                   izz="0.011745"/>
@@ -54,9 +51,6 @@
 	 		<inertial>
 	 			<origin xyz="0.00 0.01 -0.11" rpy="0 0 0"/>
       			<mass value="2.24"/>
-      			<!-- <inertia ixx="0.028848" ixy="0.000053" ixz="-0.000056"
-      				                    iyy="0.026849" iyz="0.001709"
-      				                                   izz="0.005196"/> -->
 						<inertia ixx="0.011381" ixy="0.000079" ixz="0.000000"
       				                    iyy="0.013862" iyz="-0.000663"
       				                                   izz="0.005662"/>
@@ -79,14 +73,21 @@
 	 		<inertial>
 	 			<origin xyz="${0.03 * x_sign} 0.00 -0.06" rpy="0 0 0"/>
       			<mass value="2.2"/>
-      			<!-- <inertia ixx="0.006101" ixy="-0.000307" ixz="-0.001261"
-      				                    iyy="0.012336"  iyz="0.000060"
-      				                                    izz="0.013546"/> -->
 						<inertia ixx="0.013004" ixy="-0.000212" ixz="0.000096"
       															iyy="0.005467" iyz="0.001058"
       				                                  		izz="0.015293"/>
     		</inertial>
 	 	</link>
+
+		<gazebo reference="foot_${side}">
+			<kp>100000.0</kp>
+			<kd>100.0</kd>
+			<mu1>0.9</mu1>
+			<mu2>0.09</mu2>
+			<fdir1>1 1 0</fdir1>
+			<maxVel>1.0</maxVel>
+			<minDepth>0.0001</minDepth>
+		</gazebo>
 
 
 	 	<!-- hip z rotate (vertical)-->
@@ -96,7 +97,7 @@
 	 		<child link="hip_fork_${side}"/>	 		
 	 		<origin xyz="${0.088 * x_sign} 0.0276 0" rpy="0 0 0"/>
 	 		<axis xyz="0 0 ${-x_sign}"/>
-	 		<limit lower="${-20*d2r}" upper="${20*d2r}" effort="100" velocity="10"/>
+	 		<limit lower="${-20*d2r}" upper="${20*d2r}" effort="1000" velocity="10"/>
 			 <dynamics damping="0.1" friction="0.0"/>
 	 	</joint>
 
@@ -107,7 +108,7 @@
 	 		<child link="hip_cross_${side}"/>	 		
 	 		<origin xyz="0 0 0" rpy="0 0 0"/>
 	 		<axis xyz="0 ${-x_sign} 0"/>	 		
-	 		<xacro:lr_limit side="${side}" lower="${-11*d2r}" upper="${20*d2r}" effort="1000" velocity="10"/>
+	 		<xacro:lr_limit side="${side}" lower="${-25*d2r}" upper="${25*d2r}" effort="1000" velocity="10"/>
 			 <dynamics damping="0.1" friction="0.0"/>
 	 	</joint>
 
@@ -116,9 +117,9 @@
 	 		   type="revolute">
 	 		<parent link="hip_cross_${side}"/>
 	 		<child link="hip_${side}"/>
-	 		<origin xyz="0 0 0" rpy="0 0 0"/>
+	 		<origin xyz="0 0 0" rpy="${ 0 * d2r} 0 0"/>
 	 		<axis xyz="1 0 0"/>
-	 		<limit lower="${-45*d2r}" upper="${70*d2r}" effort="100" velocity="10"/>
+	 		<limit lower="${-45*d2r}" upper="${70*d2r}" effort="1000" velocity="10"/>
 			<dynamics damping="0.1" friction="0.0"/> 		
 	 	</joint>
 
@@ -129,7 +130,7 @@
 	 		<child link="shin_${side}"/>
 	 		<origin xyz="0 0 -0.28" rpy="0 0 0"/>
 	 		<axis xyz="1 0 0"/>
-	 		<limit lower="${-140*d2r}" upper="0" effort="100" velocity="10"/>
+	 		<limit lower="${-140*d2r}" upper="0" effort="1000" velocity="10"/>
 			 <dynamics damping="0.1" friction="0.0"/>
 	 	</joint>
 
@@ -140,7 +141,7 @@
 	 		<child link="ankle_${side}"/>
 	 		<origin xyz="0 0 -0.28" rpy="0 0 0"/>
 	 		<axis xyz="1 0 0"/>
-	 		<limit lower="${-33*d2r}" upper="${70*d2r}" effort="100" velocity="10"/>
+	 		<limit lower="${-70*d2r}" upper="${70*d2r}" effort="1000" velocity="10"/>
 			 <dynamics damping="0.1" friction="0.0"/>
 	 	</joint>
 
@@ -151,7 +152,7 @@
 	 		<child link="foot_${side}"/>
 	 		<origin xyz="0 0 0" rpy="0 0 0"/>
 	 		<axis xyz="0 ${-x_sign} 0"/>	 		
-	 		<xacro:lr_limit side="${side}" lower="${-20*d2r}" upper="${11*d2r}" effort="100" velocity="10"/>
+	 		<xacro:lr_limit side="${side}" lower="${-25*d2r}" upper="${25*d2r}" effort="1000" velocity="10"/>
 			<dynamics damping="0.1" friction="0.0"/>
 	 	</joint>
 
